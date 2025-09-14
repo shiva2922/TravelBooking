@@ -1,0 +1,74 @@
+/* Reset spacing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main navbar container */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', sans-serif;
+
+}
+
+/* Group left: logo + links */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  font-size: 24px;
+  color: #005eff;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1a1a1a;
+}
+
+/* Centered links */
+.navbar-links {
+  display: flex;
+  gap: 30px;
+  margin-left: 500px;
+  flex: 1;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #555;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navbar-links a:hover {
+  color: #005eff;
+}
+
+.navbar-links .active {
+  color: #005eff;
+  font-weight: 600;
+}
+
+/* Avatar on far right */
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}

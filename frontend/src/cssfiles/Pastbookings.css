@@ -1,0 +1,86 @@
+.past-bookings-container {
+    padding: 2rem;
+    
+}
+
+.past-bookings-title {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.bookings-grid {
+    display: flex;
+    gap: 5rem;
+    flex-wrap: wrap;
+}
+
+.booking-card {
+    flex: 1;
+    width: 40px;
+    font-size: 20px;
+   
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.booking-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.booking-status {
+    margin-bottom: 0.5rem;
+}
+
+.status-completed {
+    background-color: #d7f1d8;
+    color: #27ae60;
+    border-radius: 12px;
+    padding: 0.2rem 0.8rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.booking-route,
+.booking-date,
+.booking-time {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #666;
+}
+
+.booking-seats {
+    margin-bottom: 1rem;
+    color: #333;
+    
+    font-size: 22px;
+}
+
+.trainbtn{
+   display: block;
+  width: 70;
+  margin: 0 auto;
+   background-color: #d7f8e0;
+  color: white;
+  padding: 20px;
+  
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: none;
+
+
+}
+
+.trainbtn:hover {
+    background-color: #d7f8e0; 
+    color: white;
+    cursor: default; 
+}
+
+

@@ -13,7 +13,7 @@ import './App.css';
 function AppContent() {
   const location = useLocation();
 
-  // Hide header and footer on login and register pages
+ 
   const hideLayout = location.pathname === '/login' || location.pathname === '/register';
 
   return (

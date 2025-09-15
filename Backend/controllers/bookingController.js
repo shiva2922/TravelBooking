@@ -10,7 +10,7 @@ const createBooking = async (req, res) => {
     // if (!req.user || !req.user._id) {
     //   return res.status(400).json({ message: "User not authenticated" });
     // }
-    const mockUserId = "68c5b8ba595892b3bfd443b0"; // Replace with actual user ID for testing
+    const mockUserId = "68c5b8ba595892b3bfd443b0"; 
     const booking_id = await generateCustomId("booking", "B");
     const booking = new Booking({
       booking_id,

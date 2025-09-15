@@ -117,9 +117,11 @@
   position: absolute;
   top: 10px;
   left: 10px;
+  right: 10px; 
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  justify-content: space-between; 
+  align-items: center; 
+  gap: 0; 
 }
 
 .label {
@@ -138,7 +140,10 @@
   background-color: #52c41a;
 }
 
-/* Trip Content */
+
+
+
+
 .trip-content {
   padding: 16px;
   text-align: left;
@@ -188,7 +193,6 @@
 }
 
 
-/* Hero section - update existing styles */
 .hero {
   background-color: #f0f5ff;
   text-align: center;
@@ -207,8 +211,6 @@
   margin-bottom: 30px;
 }
 
-/* Search box styling */
-/* Search box styling */
 .search-wrapper {
   display: flex;
   justify-content: center;
@@ -222,8 +224,8 @@
   display: flex;
   gap: 12px;
   align-items: center;
-  /* Change this: */
-  flex-wrap: nowrap;  /* prevent inputs + button wrapping */
+
+  flex-wrap: nowrap;  
   max-width: 900px;
   width: 100%;
 }
@@ -250,7 +252,7 @@
   white-space: nowrap;
   width: auto;
   
-  /* Add this so button doesn’t shrink and force wrap */
+
   flex-shrink: 0;
 }
 
@@ -258,7 +260,7 @@
   background-color: #0041c2;
 }
 
-/* Responsive: wrap search inputs on smaller screens */
+
 @media screen and (max-width: 600px) {
   .search-box {
     flex-wrap: wrap;
@@ -268,7 +270,7 @@
 
 .trip-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+  grid-template-columns: repeat(3, 1fr); 
   gap: 20px;
   margin-top: 20px;
 }

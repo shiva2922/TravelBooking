@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../cssfiles/Profile.css'; 
 import api from '../services/api';
 import Pastbookings from '../components/Pastbookings'; 
+import Upcomingbookings from '../components/Upcomingbookings'; // adjust the path as needed
 
 function Profile() {
   const [profile, setProfile] = useState(null);
@@ -36,15 +37,14 @@ function Profile() {
         </div>
       </div>
 
-      {/* Upcoming bookings */}
-      {/* <UpcomingBookings /> */}
+      
+       <Upcomingbookings />
 
-      {/* Past bookings */}
+  
        <Pastbookings />
-      <Pastbookings />
+     
     </div>
   );
 }
 
 export default Profile;
-// adjust the path as needed

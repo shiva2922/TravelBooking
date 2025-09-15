@@ -10,7 +10,7 @@ const addTrip = async (req, res) => {
   try {
     const { from, to, date, time, price, totalSeats } = req.body;
 
-    // Generate trip_id like T001, T002
+    
     const trip_id = await generateCustomId("trip", "T");
     const trip = new Trip({ trip_id, from, to, date, time, price, totalSeats });
     await trip.save();

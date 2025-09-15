@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import api from '../services/api';
 import Pastbookings from '../components/Pastbookings'; // adjust the path as needed
-
+import Upcomingbookings from '../components/Upcomingbookings'; // adjust the path as needed
 
 function MyBookings() {
   const [bookings, setBookings] = useState([]);
@@ -31,7 +31,7 @@ function MyBookings() {
           <p>Status: {booking.status}</p>
         </div>
       ))} */}
-
+ <Upcomingbookings />
        <Pastbookings />
     </div>
   );

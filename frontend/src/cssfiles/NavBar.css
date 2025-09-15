@@ -1,11 +1,11 @@
-/* Reset spacing */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Main navbar container */
+
 .navbar {
   display: flex;
   align-items: center;
@@ -17,7 +17,7 @@
 
 }
 
-/* Group left: logo + links */
+
 .navbar-left {
   display: flex;
   align-items: center;
@@ -35,7 +35,7 @@
   color: #1a1a1a;
 }
 
-/* Centered links */
+
 .navbar-links {
   display: flex;
   gap: 30px;
@@ -60,7 +60,7 @@
   font-weight: 600;
 }
 
-/* Avatar on far right */
+
 .navbar-right {
   display: flex;
   align-items: center;

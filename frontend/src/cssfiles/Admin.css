@@ -132,7 +132,7 @@ body {
   color: #444;
 }
 
-/* ✅ only horizontal lines */
+
 .custom-table tr {
   border-bottom: 1px solid #e5e5e5;
 }
@@ -141,9 +141,7 @@ body {
   border-bottom: 1px solid #e5e5e5;
 }
 
-/* .custom-table tr:last-child {
-  border-bottom: none;
-} */
+
 
 .icon-btn {
   background: none;
@@ -161,7 +159,7 @@ body {
   color: #e63946;
 }
 
-/* Status badge */
+/*  for----Status badge */
 .status-badge {
   padding: 4px 10px;
   border-radius: 12px;
@@ -185,7 +183,7 @@ body {
   color: #dc2626;
 }
 
-/* QR icons */
+/* for---QR icons */
 .qr-icon {
   font-size: 30px;
 }

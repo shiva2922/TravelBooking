@@ -6,6 +6,10 @@ import "../cssfiles/Admin.css";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
+
+
+
+
 export default function Admin() {
   const [trips, setTrips] = useState([]);
   const [bookings, setBookings] = useState([]);
@@ -31,6 +35,21 @@ export default function Admin() {
   const handleTripAdded = (newTrip) => {
     setTrips((prev) => [...prev, newTrip]);
   };
+
+const handleDelete = async (tripId) => {
+  if (window.confirm("Are you sure you want to delete this trip?")) {
+    try {
+      await axios.delete(`${API_URL}/trips/${tripId}`);
+      // Remove trip from the state to update the UI
+      setTrips((prevTrips) => prevTrips.filter((trip) => trip._id !== tripId));
+    } catch (error) {
+      console.error("Error deleting trip:", error);
+      alert("Failed to delete the trip. Please try again.");
+    }
+  }
+};
+
+
 
   return (
     <div className="admin-container">
@@ -90,9 +109,12 @@ export default function Admin() {
                   <td>${t.price !== undefined ? t.price : "N/A"}</td>
                   <td>{t.totalSeats !== undefined ? t.totalSeats : "N/A"}</td>
                   <td className="actions">
-                    <span className="icon-btn edit"><FaEdit /></span>
-                    <span className="icon-btn delete"><FaTrashAlt /></span>
-                  </td>
+                  <span className="icon-btn edit"><FaEdit /></span>
+                  <span className="icon-btn delete" onClick={() => handleDelete(t._id)}>
+                    <FaTrashAlt />
+                  </span>
+                </td>
+
                 </tr>
               )) : (
                 <tr>

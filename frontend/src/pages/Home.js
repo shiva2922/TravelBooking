@@ -18,8 +18,10 @@ function Home() {
   'https://media.istockphoto.com/id/1419410282/photo/silent-forest-in-spring-with-beautiful-bright-sun-rays.jpg?s=1024x1024&w=is&k=20&c=K8yBJVB-TtpPF1O2zOhVlzXECDxJsadlRrLf4gXXNkk=',
   'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=60',
   'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=60',
   'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=60',
-  'https://images.unsplash.com/photo-1504609813447-6e8f0e1c1a7e?auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1667307648198-3bb88e38eee8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://media.istockphoto.com/id/542727462/photo/houston-texas-skyline.jpg?s=1024x1024&w=is&k=20&c=CWEcDtt9pfkroLFoN7NSCWdVgb_ixGnT7UErnC5YiaA='
 ];
 
 
@@ -76,7 +78,7 @@ function Home() {
         <h3>{trip.from} → {trip.to}</h3>
         <p className="date">📅 {new Date(trip.date).toLocaleDateString()}</p>
         <p className="time">🕒 {trip.time}</p>
-        <p className="seats">💺 {trip.availableSeats} seats available</p>
+        <p className="seats">💺 {trip.totalSeats} seats available</p>
         <div className="trip-footer">
           <span className="price">${trip.price}</span>
           <Link to={`/booking/${trip._id}`} className="book-btn">Book Now</Link>

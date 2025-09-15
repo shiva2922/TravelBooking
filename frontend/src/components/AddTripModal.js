@@ -6,36 +6,45 @@ const AddTripModal = ({ onClose }) => {
   const [formData, setFormData] = useState({
     from: "",
     to: "",
+    date: "",
     time: "",
     price: "",
     totalSeats: "",
   });
 
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post("http://localhost:5000/api/trips/add-trip", formData);
+  e.preventDefault();
+  try {
+    const tripData = {
+      from: formData.from,
+      to: formData.to,
+      date: formData.date,   // send separately
+      time: formData.time,   // send separately
+      price: formData.price,
+      totalSeats: formData.totalSeats,
+    };
 
-      // close the modal
-      if (typeof onClose === "function") onClose();
+    await axios.post("http://localhost:5000/api/trips/add-trip", tripData);
 
-      // If already on /admin, reload to refresh data.
-      // Otherwise navigate to /admin.
-      if (window.location.pathname === "/admin") {
-        window.location.reload(); // full page reload
-      } else {
-        window.location.href = "/admin"; // navigate to admin (no SPA navigation)
-      }
-    } catch (error) {
-      console.error("Error adding trip:", error);
-      alert("Failed to add trip");
+    if (typeof onClose === "function") onClose();
+
+    if (window.location.pathname === "/admin") {
+      window.location.reload();
+    } else {
+      window.location.href = "/admin";
     }
-  };
+  } catch (error) {
+    console.error("Error adding trip:", error);
+    alert("Failed to add trip");
+  }
+};
+
 
   return (
     <div className="modal-overlay">
@@ -76,16 +85,29 @@ const AddTripModal = ({ onClose }) => {
 
           <div className="form-row">
             <div className="form-group">
-              <label>Date & Time</label>
+              <label>Date</label>
               <input
-                type="text"
+                type="date"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Time</label>
+              <input
+                type="time"
                 name="time"
                 value={formData.time}
                 onChange={handleChange}
                 required
               />
             </div>
+          </div>
 
+          <div className="form-row">
             <div className="form-group">
               <label>Price</label>
               <input
@@ -97,9 +119,7 @@ const AddTripModal = ({ onClose }) => {
                 required
               />
             </div>
-          </div>
 
-          <div className="form-row">
             <div className="form-group">
               <label>Total Seats</label>
               <input

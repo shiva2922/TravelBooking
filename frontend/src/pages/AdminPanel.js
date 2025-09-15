@@ -20,7 +20,7 @@ export default function Admin() {
       try {
         const [tripsRes, bookingsRes] = await Promise.all([
           axios.get(`${API_URL}/trips/get-trip`),
-          
+           axios.get(`${API_URL}/bookings/booking-data`),
           
         ]);
         setTrips(tripsRes.data);
@@ -165,8 +165,8 @@ const handleDelete = async (tripId) => {
                     {b.qrVerified ? <span className="qr-icon success">✔</span> : <span className="qr-icon fail">○</span>}
                   </td>
                   <td className="actions">
-                    <button className="icon-btn edit"><FaEdit /></button>
-                    <button className="icon-btn delete"><FaTrashAlt /></button>
+                    <span className="icon-btn edit"><FaEdit /></span>
+                    <span className="icon-btn delete"><FaTrashAlt /></span>
                   </td>
                 </tr>
               )) : (

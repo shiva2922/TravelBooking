@@ -1,26 +1,30 @@
 const Booking = require('../models/bookingModel');
 const Trip = require('../models/tripModel');
+ const generateCustomId = require("../utils/generateId");
 
 const createBooking = async (req, res) => {
-  const { tripId, seats } = req.body;
-  const trip = await Trip.findById(tripId);
-  if (!trip) return res.status(404).json({ message: 'Trip not found' });
-
-  if (seats.length > trip.availableSeats) {
-    return res.status(400).json({ message: 'Not enough seats available' });
-  }
-
-  trip.availableSeats -= seats.length;
-  await trip.save();
-
-  const booking = await Booking.create({
-    user: req.user._id,
-    trip: tripId,
-    seats,
-    status: 'upcoming'
-  });
-
-  res.status(201).json(booking);
+  
+  try {
+    const {tripId, date, seats } = req.body;
+   
+    // if (!req.user || !req.user._id) {
+    //   return res.status(400).json({ message: "User not authenticated" });
+    // }
+    const mockUserId = "68c5b8ba595892b3bfd443b0"; // Replace with actual user ID for testing
+    const booking_id = await generateCustomId("booking", "B");
+    const booking = new Booking({
+      booking_id,
+      user: mockUserId,
+      trip: tripId,
+      date,
+      seats,
+      status: "Pending",
+      qrVerified: false,
+    });
+    await booking.save();
+    res.json({ message: "Booking added successfully", booking });
+  } catch (err) {
+    res.status(500).json({ error: err.message});}
 };
 
 const getMyBookings = async (req, res) => {
@@ -28,5 +32,16 @@ const getMyBookings = async (req, res) => {
   res.json(bookings);
 };
 
+const getBookings = async (req, res) => {
+  try {
+    const bookings = await Booking.find()
+      .populate("user", "name")
+      .populate("trip", "route");
+    res.json(bookings);
+  } catch (err) {
+    res.status(500).json({ error: err.message});
+}
+};
 
-module.exports = { createBooking, getMyBookings };
+
+module.exports = { createBooking, getMyBookings, getBookings };

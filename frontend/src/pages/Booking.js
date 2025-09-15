@@ -38,21 +38,31 @@ function Booking() {
   };
 
   const handleSubmit = async () => {
-    if (selectedSeats.length === 0) {
-      alert('Select at least one seat');
-      return;
-    }
-    try {
-      await api.post('/bookings', {
-        tripId: trip._id,
-        seats: selectedSeats
-      });
-      alert('Booking successful');
-      navigate('/my-bookings');
-    } catch (error) {
-      alert(error.response?.data?.message || 'Booking failed');
-    }
-  };
+  if (selectedSeats.length === 0) {
+    alert('Select at least one seat');
+    return;
+  }
+  try {
+    const token = localStorage.getItem('token');
+    await api.post('/bookings/create', {
+  tripId: trip._id,
+  date: trip.date,
+  seats: selectedSeats
+}, {
+  headers: {
+    Authorization: `Bearer ${token}`,
+    'Content-Type': 'application/json'
+  }
+});
+    alert('Booking successful');
+    navigate('/my-bookings');
+  } catch (error) {
+    alert(error.response?.data?.message || 'Booking failed');
+  }
+};
+
+
+
 
   if (!trip) return <div>Loading...</div>;
 

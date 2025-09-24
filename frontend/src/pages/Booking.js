@@ -37,28 +37,24 @@ function Booking() {
     }
   };
 
-  const handleSubmit = async () => {
+//   const handleSubmit = async () => {
+//   if (selectedSeats.length === 0) {
+//     alert('Select at least one seat');
+//     return;
+//   }
+  
+// };
+
+
+//---------------------
+const handleSubmit = async () => {
   if (selectedSeats.length === 0) {
-    alert('Select at least one seat');
+    alert("Select at least one seat");
     return;
   }
-  try {
-    const token = localStorage.getItem('token');
-    await api.post('/bookings/create', {
-  tripId: trip._id,
-  date: trip.date,
-  seats: selectedSeats
-}, {
-  headers: {
-    Authorization: `Bearer ${token}`,
-    'Content-Type': 'application/json'
-  }
-});
-    alert('Booking successful');
-    navigate('/my-bookings');
-  } catch (error) {
-    alert(error.response?.data?.message || 'Booking failed');
-  }
+
+  // Just go to checkout with data
+  navigate(`/checkout/${trip._id}`, { state: { selectedSeats, trip } });
 };
 
 

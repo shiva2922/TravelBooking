@@ -1,4 +1,4 @@
-// import { FaFacebookF, FaLinkedinIn, FaInstagram, FaTwitter } from 'react-icons/fa';
+
 import '../cssfiles/Footer.css';
 
 function Footer() {
@@ -25,10 +25,7 @@ function Footer() {
           </div>
         </div>
         <div className="footer-socials">
-          {/* <a><FaFacebookF /></a>
-          <a><FaLinkedinIn /></a>
-          <a><FaInstagram /></a>
-          <a><FaTwitter /></a> */}
+         
         </div>
       </div>
       <div className="footer-bottom">

@@ -50,6 +50,22 @@ const handleDelete = async (tripId) => {
 };
 
 
+//-------------
+const handleDeleteBooking = async (bookingId) => {
+  if (window.confirm("Are you sure you want to delete this booking?")) {
+    try {
+      await axios.delete(`${API_URL}/bookings/${bookingId}`);
+      setBookings((prev) => prev.filter((b) => b._id !== bookingId));
+    } catch (error) {
+      console.error("Error deleting booking:", error);
+      alert("Failed to delete the booking. Please try again.");
+    }
+  }
+};
+
+
+
+
 
   return (
     <div className="admin-container">
@@ -153,8 +169,8 @@ const handleDelete = async (tripId) => {
                 <tr key={b._id}>
                   <td>{b.booking_id}</td>
                   <td>{b.user?.name}</td>
-                  <td>{b.trip?.route}</td>
-                  <td>{b.date}</td>
+                  <td>{b.trip ? `${b.trip.from} to ${b.trip.to}` : "N/A"}</td>
+                  <td>{b.date ? new Date(b.date).toLocaleDateString() : "N/A"}</td>
                   <td>{Array.isArray(b.seats) ? b.seats.join(", ") : b.seats}</td>
                   <td>
                     <span className={`status-badge ${b.status?.toLowerCase() || "pending"}`}>
@@ -165,9 +181,12 @@ const handleDelete = async (tripId) => {
                     {b.qrVerified ? <span className="qr-icon success">✔</span> : <span className="qr-icon fail">○</span>}
                   </td>
                   <td className="actions">
-                    <span className="icon-btn edit"><FaEdit /></span>
-                    <span className="icon-btn delete"><FaTrashAlt /></span>
-                  </td>
+  <span className="icon-btn edit"><FaEdit /></span>
+  <span className="icon-btn delete" onClick={() => handleDeleteBooking(b._id)}>
+    <FaTrashAlt />
+  </span>
+</td>
+
                 </tr>
               )) : (
                 <tr>

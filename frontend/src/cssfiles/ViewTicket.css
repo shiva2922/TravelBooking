@@ -1,0 +1,82 @@
+.view-ticket-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  font-family: 'Arial', sans-serif;
+}
+
+.ticket-box {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 700px;
+}
+
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px dashed #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.ticket-header h2 {
+  margin: 0;
+}
+
+.ticket-header .price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2ecc71;
+}
+
+.boarding-pass {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flight-time, .arrival {
+  text-align: center;
+}
+
+.passenger-info {
+  flex: 1;
+  padding: 0 20px;
+  font-size: 14px;
+}
+
+.ticket-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.barcode {
+  width: 180px;
+  height: 50px;
+  background: repeating-linear-gradient(
+    90deg,
+    #000,
+    #000 2px,
+    #fff 2px,
+    #fff 4px
+  );
+}
+
+.download-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.download-btn:hover {
+  background: #0056b3;
+}

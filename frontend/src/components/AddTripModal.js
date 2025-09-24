@@ -51,9 +51,9 @@ const AddTripModal = ({ onClose }) => {
       <div className="modal-card">
         <div className="modal-header">
           <h3>Trip Details</h3>
-          <button className="modal-close-btn" onClick={onClose}>
+          <span className="modal-close-btn" onClick={onClose}>
             &times;
-          </button>
+          </span>
         </div>
 
         <form onSubmit={handleSubmit}>

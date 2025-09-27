@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import api from '../services/api';
-import Pastbookings from '../components/Pastbookings'; // adjust the path as needed
-import Upcomingbookings from '../components/Upcomingbookings'; // adjust the path as needed
+import Pastbookings from '../components/Pastbookings';
+import Upcomingbookings from '../components/Upcomingbookings';
 
 function MyBookings() {
   const [bookings, setBookings] = useState([]);
@@ -19,10 +19,9 @@ function MyBookings() {
   }, []);
 
   return (
-    <div className ="profile-container"style={{ padding: '20px' }}>
-    
- <Upcomingbookings/>
-       <Pastbookings/>
+    <div className="profile-container" style={{ padding: '20px' }}>
+      <Upcomingbookings bookings={bookings} />
+      {/* <Pastbookings bookings={bookings}/> */}
     </div>
   );
 }

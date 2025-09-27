@@ -1,6 +1,7 @@
 const Booking = require('../models/bookingModel');
 const Trip = require('../models/tripModel');
  const generateCustomId = require("../utils/generateId");
+ const User = require('../models/userModel');
  
 
 const createBooking = async (req, res) => {
@@ -11,6 +12,7 @@ const createBooking = async (req, res) => {
    if (!req.user || !req.user._id) {
       return res.status(400).json({ message: "User not authenticated" });
     }
+ // const mockUserId = "68d2b90375a63785978c5841"; // Replace with a valid user ID from your database
     
 
     const booking_id = await generateCustomId("booking", "B");
@@ -30,6 +32,7 @@ const createBooking = async (req, res) => {
 };
 
 const getMyBookings = async (req, res) => {
+ 
   const bookings = await Booking.find({ user: req.user._id }).populate('trip');
   res.json(bookings);
 };

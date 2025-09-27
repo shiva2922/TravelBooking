@@ -6,6 +6,41 @@ function BookingConfirmation() {
   const navigate = useNavigate();
   const { trip, selectedSeats } = location.state || {};
 
+  const handleDownload = () => {
+    const bookingId = Math.floor(Math.random() * 1000000);
+    const ticketDetails = `
+      Booking ID: ${bookingId}
+      From: ${trip?.fromCode} - ${trip?.from}
+      To: ${trip?.toCode} - ${trip?.to}
+      Date: ${new Date(trip?.date).toLocaleDateString()}
+      Departure: ${trip?.time}
+      Arrival: ${
+        trip?.time
+          ? (() => {
+              const [hours, minutes] = trip.time.split(":").map(Number);
+              const date = new Date();
+              date.setHours(hours + 2, minutes, 0, 0);
+              return date.toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              });
+            })()
+          : ""
+      }
+      Seats: ${selectedSeats?.join(", ")}
+      Total Fare Paid: $${trip?.price * selectedSeats?.length}
+    `;
+
+    // Create a Blob and trigger download
+    const blob = new Blob([ticketDetails], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "ticket.txt"; // file name
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="confirmation-container">
       <div className="confirmation-header">
@@ -30,23 +65,30 @@ function BookingConfirmation() {
           <div>
             <h2>{trip?.toCode || "SFO"}</h2>
             <p>{trip?.to}</p>
-     <p>
-  {trip?.time
-    ? (() => {
-        const [hours, minutes] = trip.time.split(":").map(Number);
-        const date = new Date();
-        date.setHours(hours + 2, minutes, 0, 0);
-        return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-      })()
-    : ""}
-</p>
-
+            <p>
+              {trip?.time
+                ? (() => {
+                    const [hours, minutes] = trip.time.split(":").map(Number);
+                    const date = new Date();
+                    date.setHours(hours + 2, minutes, 0, 0);
+                    return date.toLocaleTimeString([], {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    });
+                  })()
+                : ""}
+            </p>
           </div>
         </div>
 
         <div className="ticket-info">
-          <p><strong>Date:</strong> {new Date(trip?.date).toLocaleDateString()}</p>
-          <p><strong>Seats:</strong> {selectedSeats?.join(", ")}</p>
+          <p>
+            <strong>Date:</strong>{" "}
+            {new Date(trip?.date).toLocaleDateString()}
+          </p>
+          <p>
+            <strong>Seats:</strong> {selectedSeats?.join(", ")}
+          </p>
         </div>
 
         <div className="ticket-fare">
@@ -55,20 +97,25 @@ function BookingConfirmation() {
         </div>
 
         <div className="qr-section">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=boardingpass" alt="QR Code"/>
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=boardingpass"
+            alt="QR Code"
+          />
           <p>Scan this QR code at the boarding gate</p>
         </div>
 
         <div className="ticket-actions">
-          <button className="btn primary">⬇ Download Ticket</button>
+          <button className="btn primary" onClick={handleDownload}>
+            ⬇ Download Ticket
+          </button>
           <button
-  className="btn secondary"
-  onClick={() => navigate("/view-ticket", { state: { trip, selectedSeats } })
-  }
->
-  👁 View Ticket
-</button>
-
+            className="btn secondary"
+            onClick={() =>
+              navigate("/view-ticket", { state: { trip, selectedSeats } })
+            }
+          >
+            👁 View Ticket
+          </button>
         </div>
       </div>
     </div>

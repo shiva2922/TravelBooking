@@ -3,8 +3,8 @@ const { createBooking, getMyBookings, getBookings, deleteBooking } = require('..
 const { protect } = require('../middleware/authMiddleware');
 const router = express.Router();
 
-router.post('/create', createBooking);
-router.get('/my-bookings', getMyBookings);
+router.post('/create', protect, createBooking);
+router.get('/my-bookings', protect, getMyBookings);
 router.get("/booking-data", getBookings);
 router.delete('/:id', deleteBooking);
 

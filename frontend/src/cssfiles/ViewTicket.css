@@ -1,82 +1,254 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+  
+  background-color: #f9f9f9;
+  font-family: 'Montserrat', sans-serif;
+}
 .view-ticket-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;   /* stack children vertically */
+  align-items: center;      /* center horizontally */
   margin-top: 40px;
-  font-family: 'Arial', sans-serif;
+  
 }
 
-.ticket-box {
+.ticket-box{
+  width:87%
+}
+
+.terms-box {
+  margin-top: 30px;
   background: #fff;
+  padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 20px;
-  width: 700px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  font-size: 15px;
+  color: #222;
+  line-height: 1.7;
+  width: 94%
+}
+
+.terms-box h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.terms-box h4 {
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.terms-box ul {
+  padding-left: 20px;
+}
+
+.terms-box li {
+  margin-bottom: 12px;
 }
 
 .ticket-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px dashed #ddd;
-  padding-bottom: 10px;
+  align-items: flex-start;
   margin-bottom: 20px;
+  width:92%;
 }
 
 .ticket-header h2 {
   margin: 0;
+  font-size: 22px;
 }
 
-.ticket-header .price {
-  font-size: 20px;
+.ticket-location {
+  font-size: 13px;
+  color: #555;
+}
+
+.price-section {
+  text-align: right;
+}
+
+.price {
+  font-size: 24px;
   font-weight: bold;
-  color: #2ecc71;
-}
-
-.boarding-pass {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.flight-time, .arrival {
-  text-align: center;
-}
-
-.passenger-info {
-  flex: 1;
-  padding: 0 20px;
-  font-size: 14px;
-}
-
-.ticket-footer {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.barcode {
-  width: 180px;
-  height: 50px;
-  background: repeating-linear-gradient(
-    90deg,
-    #000,
-    #000 2px,
-    #fff 2px,
-    #fff 4px
-  );
+  color: #14532d;
+  display: block;
 }
 
 .download-btn {
+  margin-top: 5px;
   background: #007bff;
   color: white;
   border: none;
-  padding: 10px 18px;
+  padding: 8px 14px;
   border-radius: 6px;
   cursor: pointer;
-  transition: 0.2s ease;
 }
 
 .download-btn:hover {
   background: #0056b3;
+}
+
+.boarding-pass {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1.5fr;
+  gap: 20px;
+  align-items: stretch;
+  width:92%;
+}
+
+/* Departure / Arrival times */
+.flight-times {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.time-block h3 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.time-block p {
+  font-size: 14px;
+  color: #555;
+}
+
+.plane-icon {
+  font-size: 20px;
+  margin: 15px 0;
+}
+
+/* Passenger Info */
+.passenger-section {
+  background: #f5f9ff;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.passenger-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #dce8ff;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.passenger-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.passenger-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.class-tag {
+  font-size: 13px;
+  font-weight: bold;
+  color: #333;
+}
+
+.details-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: 13px;
+}
+
+.details-row div {
+  text-align: center;
+}
+
+.barcode {
+  
+  margin-bottom: -40px;
+  margin-top: 20px;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: flex-end; /* push barcode to right */
+}
+
+.barcode::before {
+  content: "";
+  width: 240px;  /* barcode width */
+  height: 60%;
+  background: repeating-linear-gradient(
+    90deg,
+    black 0px,
+    black 2px,
+    white 2px,
+    white 4px,
+    black 4px,
+    black 6px,
+    white 6px,
+    white 10px,
+    black 10px,
+    black 15px,
+    white 15px,
+    white 18px,
+    black 18px,
+    black 22px,
+    white 22px,
+    white 26px,
+    black 26px,
+    black 28px,
+    white 28px,
+    white 33px,
+    black 33px,
+    black 38px,
+    white 38px,
+    white 42px,
+    black 42px,
+    black 46px,
+    white 46px,
+    white 50px
+  );
+}
+
+
+
+ 
+
+/* Flight Path Map */
+.flight-map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-path {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 220px;
+}
+
+.map-dot {
+  font-size: 12px;
+  text-align: center;
+  padding: 4px 6px;
+  border-radius: 6px;
+  background: #eee;
+}
+
+.map-dot.left {
+  margin-right: 5px;
+}
+
+.map-dot.right {
+  margin-left: 5px;
 }

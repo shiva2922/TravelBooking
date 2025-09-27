@@ -32,3 +32,22 @@ display: block;
     font-size: 0.75rem;
     font-weight: 600;
 }
+
+.bookings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* max 3 per row */
+  gap: 20px; /* spacing between cards */
+}
+
+/* Responsive: adjust on smaller screens */
+@media (max-width: 1024px) {
+  .bookings-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .bookings-grid {
+    grid-template-columns: 1fr; /* 1 per row on mobile */
+  }
+}

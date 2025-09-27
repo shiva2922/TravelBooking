@@ -2,7 +2,6 @@
 
 import { useLocation, useNavigate } from "react-router-dom";
 import "../cssfiles/ViewTicket.css";
-//import { Calendar, Clock, DoorOpen, Armchair } from "lucide-react";
 
 function ViewTicket() {
   const location = useLocation();
